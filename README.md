@@ -1,6 +1,8 @@
-# CdProj
+# SLR Parser
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.8.
+
+#Live Demo - https://slr-parser.netlify.app/
 
 ## Development server
 
