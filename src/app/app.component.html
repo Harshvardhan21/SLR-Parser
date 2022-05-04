@@ -1,0 +1,71 @@
+<div>
+  <div style="margin-left:2%">
+    <h1>
+      Shift Reduce Parser
+    </h1>
+  </div>
+  
+  <Div>
+    <div style="margin-left:2%;font-size: 18px;text-align: justify;">
+      Shift Reduce parser attempts for the construction of parse in a similar manner as done in bottom-up parsing i.e. the parse tree is constructed from leaves(bottom) to the root(up). A more general form of the shift-reduce parser is the LR parser. 
+      <br><br>Basic Operations – 
+
+      <br>  <b>Shift:</b> This involves moving symbols from the input buffer onto the stack.
+      <br>  <b>Reduce:</b> If the handle appears on top of the stack then, its reduction by using appropriate production rule is done i.e. RHS of a production rule is popped out of a stack and LHS of a production rule is pushed onto the stack.
+      <br>  <b>Accept:</b> If only the start symbol is present in the stack and the input buffer is empty then, the parsing action is called accept. When accepted action is obtained, it is means successful parsing is done.
+      <br>  <b>Error:</b> This is the situation in which the parser can neither perform shift action nor reduce action and not even accept action.
+    </div>
+
+    <div class="input-container">
+
+      <div class="production-container">
+        <h3 class="txt">Enter Productions</h3>
+        <div *ngFor="let prod of production">
+          <form style="font-weight: bold;display: flex;align-items: center;">
+            <input class="input leftInput" [(ngModel)]="production[prod.index].key" name="{prod.index}key">
+            ->
+            <input class="input" [(ngModel)]="production[prod.index].value" name="{prod.index}value">
+            <button (click)="remProd(prod)" style="font-size: 15px;background-color: #FFD65C;color: black;margin-left: 0%;">X</button>
+          </form>
+        </div>
+
+        <button (click)="addProd()">
+          Add new Production
+        </button>
+      </div>
+
+      <div class="string-container">
+        <h3 class="txt">Input String</h3>
+        <input class="input" [(ngModel)]="input1">
+
+        <button [disabled]="input1==''" (click)="calculate()">
+          Do Shift Reduction
+        </button>
+        <div *ngIf="input1==''" style="color:red">* Please Provide an Input String</div>
+      </div>
+    </div>
+
+    <div style="width:100%;margin-left: 2%;" *ngIf="ready">
+      <table style="width:90%">
+        <tr>
+          <th>Stack</th>
+          <th>Input</th>
+          <th>Action</th>
+        </tr>
+        <!-- <div> -->
+          <tr *ngFor="let tb of table" style="text-align: center;width:100%">
+            <td>{{tb.c1}}</td>
+            <td>{{tb.c2}}</td>
+            <td>{{tb.c3}}</td>
+          </tr>
+        <!-- </div> -->
+      </table>
+      <div style="display: flex;">
+        <button [disabled]="!checkinput" (click)="next()">Next Line</button>
+        <button (click)="reset()">Reset</button>
+      </div>
+    </div>
+
+  </Div>
+</div>
+<!-- <router-outlet></router-outlet> -->
